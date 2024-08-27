@@ -19,6 +19,6 @@
 
 
 
-``` c++
+``` C++
 ``` #include<iostream>
 ```
