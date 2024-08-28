@@ -73,8 +73,12 @@ here we have used **ESP32** module
     - MQ7
     - MQ8
     - MQ135
- 
 
+## Software 
+- Webpage 
+- Google Sheets (Database)
+- Google App console (retrieve data from ESP32)
+- and a internet connection :)
 
 
 
