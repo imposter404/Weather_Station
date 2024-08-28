@@ -97,8 +97,8 @@ Here we have used **ESP32** module
 > #include <WiFi.h>
 > #include <SPI.h>
 > #include <Wire.h>
-> 
-
+> #include <Adafruit_GFX.h>
+>
 
 
 > ```
