@@ -90,3 +90,18 @@ here we have used **ESP32** module
 > ``` C++
 > #include<iostream>
 > ```
+
+
+
+
+## Front-End 
+
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" height="50px" alt="JavaScript"  />
+
+JS Library 
+- Apex Chart JS
+- 
+
+> ```Js 
+> <script src="apexChartJS.js"></script>
+> ```
