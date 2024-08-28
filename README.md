@@ -34,8 +34,12 @@ It can be done using any type of hardware controller. Eg: `Arduino`, `ESP`, `Ras
 here we have used **ESP32** module 
 
 
+
+
 ## Why ESP32 ?
 **ESP32** is a low cost microcontroller mostly used in IOT based project. It comes with built-in `WiFi` And `Bluetooth module` 
+- **Connectivity**: ESP32 has built-in Wi-Fi and Bluetooth module 
+
 
 
 
