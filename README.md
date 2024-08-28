@@ -47,6 +47,8 @@ here we have used **ESP32** module
   - DAC (Digital to Analog Converter)
   - PWM (Pulse Width Modulation)
 - **Low Power Consumption**
+- **Development Environments** : Arduino IDE
+
 
 
 
