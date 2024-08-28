@@ -41,11 +41,9 @@ here we have used **ESP32** module
 - **Connectivity**: ESP32 has built-in Wi-Fi and Bluetooth module 
 - **I/O port**:The microcontroller includes a variety of peripherals such as:
   - GPIO (General Purpose Input/Output) pins
-  -ADC (Analog to Digital Converter)
-DAC (Digital to Analog Converter)
-PWM (Pulse Width Modulation)
-I2C, SPI, and UART interfaces for communication with other devices and sensors.
-
+  - ADC (Analog to Digital Converter)
+  - DAC (Digital to Analog Converter)
+  - PWM (Pulse Width Modulation)
 
 
 
