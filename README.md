@@ -31,7 +31,7 @@ It collects various environmental data such as `Temperature`, `Humidity`, `Heat 
 ## Description:
 It is a Hardware & Software based project basically a IOT based project. 
 It can be done using any type of hardware controller. Eg: `Arduino`, `ESP`, `Raspberry Pi`.
-here we have used **ESP32** module 
+Here we have used **ESP32** module 
 
 
 
