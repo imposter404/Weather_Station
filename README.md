@@ -61,7 +61,9 @@ here we have used **ESP32** module
 
 
 
-
+# Project Requirements
+## Hardware
+ 
 
 
 
