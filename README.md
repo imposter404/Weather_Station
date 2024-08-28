@@ -39,6 +39,8 @@ here we have used ESP32 module
 - **Real-time Data Monitoring**: Continuously measures and displays `Temperature`, `Humidity`, and `Heat Index`.
 - **Database**: `ESP32` Sends data to a web server or here we have used `Google Sheets` as a database to store and retrieve historical data .
 - **User-Friendly Interface**: Displays data on the website or a web dashboard.
+- **Data Logging**: Stores historical data for analysis.
+
 
 
 
