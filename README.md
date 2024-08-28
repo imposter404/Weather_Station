@@ -46,8 +46,7 @@ here we have used **ESP32** module
   - ADC (Analog to Digital Converter)
   - DAC (Digital to Analog Converter)
   - PWM (Pulse Width Modulation)
-
-
+- **Low Power Consumption**
 
 
 
