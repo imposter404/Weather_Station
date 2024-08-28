@@ -69,9 +69,10 @@ here we have used **ESP32** module
 - AC to DC adaptor 
 - **Sensors**
   - DHT11 (for `Temperature` `Humidity` `Heat Index`)
-  - MQ7
-  - MQ8
-  - MQ135
+  - **Gas**
+    - MQ7
+    - MQ8
+    - MQ135
  
 
 
