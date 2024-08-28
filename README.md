@@ -105,6 +105,10 @@ Here we have used **ESP32** module
 
 Arduino code are at [`Arduino`](Arduino/Readme.md) folder 
 
+> [!NOTE]
+> Change the URL in the code with your Google Sheets URL
+
+
 
 ## Front-End 
 
