@@ -34,6 +34,10 @@ It can be done using any type of hardware controller Eg: `Arduino`, `ESP`, `Rasp
 here we have used ESP32 module 
 
 
+## Why ESP32 ?
+
+
+
 
 ## Features
 - **Real-time Data Monitoring**: Continuously measures and displays `Temperature`, `Humidity`, and `Heat Index`.
