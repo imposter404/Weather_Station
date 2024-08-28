@@ -82,7 +82,10 @@ here we have used **ESP32** module
 
 
 # Code 
-# Arduino
+## Arduino
+
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" height="50px" alt="C++" />  
+
 
 > ``` C++
 > #include<iostream>
