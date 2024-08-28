@@ -36,7 +36,7 @@ here we have used ESP32 module
 
 
 ## Features
-
+- **Real-time Data Monitoring**: Continuously measures and displays `Temperature`, `Humidity`, and `Heat Index`.
 
 
 
