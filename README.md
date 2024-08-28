@@ -23,8 +23,8 @@ It collects various environmental data such as `Temperature`, `Humidity`, `Heat 
 
 
 
-### Description:
-
+## Description:
+It is a Hardware & Software based project to 
 
 
 
