@@ -40,8 +40,8 @@ here we have used **ESP32** module
 **ESP32** is a low cost microcontroller mostly used in IOT based project. It comes with built-in `WiFi` And `Bluetooth module` 
 - **Connectivity**: ESP32 has built-in Wi-Fi and Bluetooth module 
 - **I/O port**:The microcontroller includes a variety of peripherals such as:
-GPIO (General Purpose Input/Output) pins
-ADC (Analog to Digital Converter)
+  -GPIO (General Purpose Input/Output) pins
+  -ADC (Analog to Digital Converter)
 DAC (Digital to Analog Converter)
 PWM (Pulse Width Modulation)
 I2C, SPI, and UART interfaces for communication with other devices and sensors.
