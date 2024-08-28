@@ -21,7 +21,7 @@
 
 ## Overview
 This project is a weather monitoring system built using the **ESP32** microcontroller. 
-It collects various environmental data such as `Temperature`, `Humidity`, `Heat Index` and displays the information in real-time.
+It collects various environmental data such as `Temperature`, `Humidity`, `Heat Index` ,`Gas Detector` and displays the information in real-time.
 
 
 
@@ -54,7 +54,7 @@ Here we have used **ESP32** module
 
 
 ## Features
-- **Real-time Data Monitoring**: Continuously measures and displays `Temperature`, `Humidity`, and `Heat Index`.
+- **Real-time Data Monitoring**: Continuously measures and displays `Temperature`, `Humidity`, `Heat Index` and harmful `Gas`.
 - **Database**: `ESP32` Sends data to a web server or here we have used `Google Sheets` as a database to store and retrieve historical data .
 - **Interface**: Displays data on the website or a web dashboard. Data are being fetch from database (here `Google Sheets`).
 - **Data Logging**: Stores historical data on database for `data analysis` and `data mining`.
