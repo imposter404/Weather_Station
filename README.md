@@ -63,6 +63,12 @@ here we have used **ESP32** module
 
 # Project Requirements
 ## Hardware
+- ESP32 
+- Breadboard
+- Wires
+- AC to DC adaptor 
+- **Sensors**
+  - 
  
 
 
