@@ -94,6 +94,8 @@ Here we have used **ESP32** module
 > #include<iostream>
 > #include <SPI.h>
 > #include <LoRa.h>
+> #include <WiFi.h>
+
 
 
 > ```
