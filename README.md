@@ -38,7 +38,9 @@ here we have used **ESP32** module
 
 ## Why ESP32 ?
 **ESP32** is a low cost microcontroller mostly used in IOT based project. It comes with built-in `WiFi` And `Bluetooth module` 
-- **Connectivity**: ESP32 has built-in Wi-Fi and Bluetooth module 
+- **Connectivity**: ESP32 has built-in module 
+  - Wi-Fi 
+  - Bluetooth 
 - **I/O port**:The microcontroller includes a variety of peripherals such as:
   - GPIO (General Purpose Input/Output) pins
   - ADC (Analog to Digital Converter)
