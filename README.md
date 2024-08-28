@@ -96,6 +96,8 @@ Here we have used **ESP32** module
 > #include <LoRa.h>
 > #include <WiFi.h>
 > #include <SPI.h>
+> #include <Wire.h>
+> 
 
 
 
