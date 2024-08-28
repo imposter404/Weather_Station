@@ -92,6 +92,8 @@ Here we have used **ESP32** module
 
 > ``` C++
 > #include<iostream>
+> #include <SPI.h>
+
 > ```
 
 
