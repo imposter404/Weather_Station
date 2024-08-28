@@ -68,13 +68,13 @@ Here we have used **ESP32** module
 - Wires
 - AC to DC adaptor 
 - **Sensors**
-  - DHT11 (for `Temperature` `Humidity` `Heat Index`)
+  - **Temperature, Humidity, Heat Index**
+    - DHT11
   - **Gas Director**
     - MQ7
     - MQ8
     - MQ135
-- **Temperature, Humidity, Heat Index**
-    - DHT11
+
 
 
 ## Software 
