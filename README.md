@@ -35,7 +35,7 @@ here we have used ESP32 module
 
 
 ## Why ESP32 ?
-
+**ESP32** is a low cost microcontroller mostly used in IOT based project. It comes with built-in `WiFi` And `Bluetooth module` 
 
 
 
