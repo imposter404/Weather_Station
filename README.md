@@ -103,7 +103,7 @@ Here we have used **ESP32** module
 > #include "time.h"
 > ```
 
-Arduino code are at `Arduino` folder or at `[Arduino](Arduino/Readme.md)`  
+Arduino code are at `Arduino` folder or at [`Arduino`](Arduino/Readme.md)  
 
 
 ## Front-End 
