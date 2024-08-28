@@ -98,7 +98,9 @@ Here we have used **ESP32** module
 > #include <SPI.h>
 > #include <Wire.h>
 > #include <Adafruit_GFX.h>
->
+> #include <Adafruit_ILI9341.h>
+> 
+
 
 
 > ```
