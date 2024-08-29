@@ -81,6 +81,7 @@ Here we have used **ESP32** module
 - Webpage 
 - Google Sheets (Database)
 - Google App console (retrieve data from ESP32)
+- Arduino IDE 
 - and a internet connection :)
 
 
