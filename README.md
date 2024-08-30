@@ -21,7 +21,7 @@
 
 ## Overview
 This project is a weather monitoring system built using the **ESP32** microcontroller. 
-It collects various environmental data such as `Temperature`, `Humidity`, `Heat Index` ,`Gas Detector` and displays the information in real-time with data visualization and data mining 
+It collects various environmental data such as `Temperature`, `Humidity`, `Heat Index` ,`Gas Detector` and displays the information in real-time with data visualization
 
 
 
