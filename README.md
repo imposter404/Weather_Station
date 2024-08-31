@@ -117,7 +117,6 @@ Arduino code are at [`Arduino`](Arduino/Readme.md) folder
 
 JS Library 
 - Apex Chart JS 
-- 
 
 > ```Js 
 > <script src="apexChartJS.js"></script>
