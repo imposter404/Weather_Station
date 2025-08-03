@@ -1,2 +1,965 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="link/min1.css">
+<script src="link/boot.js"></script>
+<script src="link/apex.js"></script>
+<script src="link/gauge.js"></script>
+<style>
+body{
+    background: black;
+    /* background: linear-gradient(deg90,#fff,#FFFFFF); */
+    background: linear-gradient(0deg,#0000009f,#0000003f),url(pic/34531785_7_asadahasg11.jpg) no-repeat center/cover,rgb(78, 78, 78);
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+/* *{
+    border: 1px solid red;
+} */
+
+:root{
+    --card-color:#00012ed2;
+}
+
+.flex{
+    display: flex;
+}
+.flex-div{
+    flex: auto;
+}
+.middle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.div-time{
+    .flex{
+        flex-direction: row;
+    }
+    .flex-div{
+        flex: 50%;
+        padding: 50px;
+    }
+    .card1{
+        background: var(--card-color);
+        border: 5px solid rgba(255, 255, 255, 0.438);
+        height: 150px;
+        border-radius: 20px;
+        padding: 30px;
+        transition: all .2s ease-in-out;
+        &:hover{
+            border: 5px solid rgb(255, 255, 255);
+            box-shadow: 0px 0px 26px -8px white;
+            /* scale: 1.01; */
+        }
+    }
+}
+
+
+.div-gauge{
+    padding: 0 50px;
+    .flex{
+        flex-direction: row;
+        border-radius: 20px;
+        /* background: #1a1b33; */
+        /* border-bottom: 1px solid white; */
+        box-shadow: 0px 4px 0px -2px rgb(255, 255, 255);
+        background: linear-gradient(180deg, #254c67, #1c012a);
+    }
+    .flex-div{
+        flex: 20%;
+        padding: 50px;
+    }
+    .card1{
+        /* background-color: rgba(0, 1, 46, 0.822); */
+        background: var(--card-color);
+        border: 5px solid rgba(255, 255, 255, 0.438);
+        height: fit-content;
+        border-radius: 20px;
+        padding: 30px;
+        transition: all .2s ease-in-out;
+        &:hover{
+            border: 5px solid white;
+            box-shadow: 0px 0px 26px -8px white;
+            /* scale: 1.01; */
+        }
+    }
+}
+.div-chart{
+    padding: 0 50px;
+    height: 358px;
+    margin: 50px 0;
+    .div{
+        position: relative;
+        border: 5px solid rgba(255, 255, 255, 0.438);
+        padding: 20px 20px;
+        background: var(--card-color);
+        border-radius: 20px;
+        height: 100%;
+        transition: all .2s ease-in-out;
+        &:hover{
+            border: 5px solid rgb(255, 255, 255);
+            box-shadow: 0px 0px 26px -8px white;
+            /* scale: 1.01; */
+        }
+    }
+}
+
+.div-bar-chart{
+    /* background: #1a1b33; */
+    .flex{
+    flex-direction: row;
+    }
+    .flex-div{
+        flex: 20%;
+        padding: 50px;
+    }
+    .card1{
+        background: var(--card-color);
+        border: 5px solid rgba(255, 255, 255, 0.438);
+        height: 400px;
+        border-radius: 20px;
+        padding: 30px;
+        transition: all .2s ease-in-out;
+        &:hover{
+            border: 5px solid rgb(255, 255, 255);
+            box-shadow: 0px 0px 26px -8px white;
+            /* scale: 1.01; */
+        }
+    }
+}
+
+
+
+
+
+.div-range{
+    .div{
+        margin: 10px; 
+        border: 1px solid white;
+        padding: 20px;
+        border-radius:10px;
+        background: var(--card-color);
+    }
+}
+
+.div-table{
+    margin: 50px 0;
+    padding: 50px;
+    .div{    
+        padding: 50px;
+        border-radius: 20px;
+        border: 5px solid rgba(255, 255, 255, 0.438);
+        background: var(--card-color);
+        transition: all .2s ease-in-out;
+        &:hover{
+            border: 5px solid rgb(255, 255, 255);
+            box-shadow: 0px 0px 26px -8px white;
+            /* scale: 1.01; */
+        }
+    }
+
+}
+
+
+
+</style>
+<body>
+<div class="middle" style="background-color: #021829;padding: 20px;">
+     <div>Air Quality monitor</div>
+</div>
+
+
+<div class="div-time">
+    <div class="flex">
+        <div class="flex-div">
+            <div class="card1">
+                <div style="font-size: 20px;">TIME</div>
+                <div style="font-size: 30px;" id="time-value">00:00:00</div>
+            </div>
+        </div>
+        <div class="flex-div">
+            <div class="card1" style="position: relative;">
+                <div class="flex" style="flex-direction: row;">
+                    <div style="font-size: 20px; flex: auto;">Reload Interval</div>
+                    <div style="align-items:end;"><button class="btn btn-danger" onclick="pause()"><i class="bi bi-pause"></i></button></div>
+                </div>
+                <div class="div">
+                    <div id="range-value">5 s</div>
+                    <input type="range" max="10" min="1" id="range" value="1" oninput="range()" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="div-gauge">
+    <div class="flex">
+        <div class="flex-div middle">
+            <div class="card1">
+                <canvas id="gauge1"></canvas>
+                <div class="middle" id="gauge1-text" style="font-size: 30px;"></div>
+                <hr>
+                <div class="middle" >TEMPERETURE</div>
+            </div>
+        </div>
+        <div class="flex-div middle">
+            <div class="card1 ">
+                <canvas id="gauge2"></canvas>
+                <div class="middle" id="gauge2-text" style="font-size: 30px;"></div>
+                <hr>
+                <div class="middle">HUMIDITY</div>
+            </div>
+        </div>
+        <div class="flex-div middle">
+            <div class="card1 ">
+                <canvas id="gauge3"></canvas>
+                <div class="middle" id="gauge3-text" style="font-size: 30px;"></div>
+                <hr>
+                <div class="middle">HEAT INDEX</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="div-chart">
+    <div class="div">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked onclick="chart1_realtime()">
+            <label class="btn btn-outline-light" for="btnradio1">Real Time</label>
+        
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="chart1_week()">
+            <label class="btn btn-outline-light" for="btnradio2">Week</label>
+        
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" onclick="chart1_month()"> 
+            <label class="btn btn-outline-light" for="btnradio3">Month</label>
+        </div>        
+        <div style="height: 90%;">
+            <div id="Chart1"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="div-bar-chart">
+    <div class="flex">
+        <div class="flex-div">
+            <div class="card1">
+                <div id="Chart2"></div>
+            </div>
+        </div>
+        <div class="flex-div">
+            <div class="card1">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="bar-chart-btnradio" id="bar-chart-btnradio1" autocomplete="off" checked onclick="chart3_realtime()">
+                    <label class="btn btn-outline-light" for="bar-chart-btnradio1">Real Time</label>
+                
+                    <input type="radio" class="btn-check" name="bar-chart-btnradio" id="bar-chart-btnradio2" autocomplete="off" onclick="chart3_week()">
+                    <label class="btn btn-outline-light" for="bar-chart-btnradio2">Week</label>
+                
+                    <input type="radio" class="btn-check" name="bar-chart-btnradio" id="bar-chart-btnradio3" autocomplete="off" onclick="chart3_month()"> 
+                    <label class="btn btn-outline-light" for="bar-chart-btnradio3">Month</label>
+                </div> 
+                <div style="height:90%;">
+                    <div id="Chart3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="div-table " >
+    <div class="div">
+        <div style="padding-bottom: 20px;">
+            LOGS
+        </div>
+        <div class="table-responsive" style="max-height: 500px;">
+            <table class="table table-dark" id="Table">
+                <thead style="border-bottom:1px solid white ;">
+                    <tr>
+                        <th>Sl no</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Humidity</th>
+                        <th>Heat Index</th>
+                        <th>MQ7</th>
+                        <th>MQ8</th>
+                        <th>MQ135</th>
+                    </tr>
+                </thead>
+                    <tbody >
+                        <tr>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+<!-- <script src="data.js"></script> -->
+<script src="random.js"></script>
+<script>
+
+let d=new Date()
+let date =d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+
+let gauge1
+let gauge2
+let gauge3
+function load_gauge(){
+let opts1 = {
+ angle: -0.2, // The span of the gauge arc
+ lineWidth: 0.2, // The line thickness
+ radiusScale: 1, // Relative radius
+ pointer: {
+     length: 0.6, // // Relative to gauge radius
+     strokeWidth: 0.056, // The thickness
+     color: '#ffffff' // Fill color
+ },
+ limitMax: false, // If false, max value increases automatically if value > maxValue
+ limitMin: false, // If true, the min value of the gauge will be fixed
+ colorStart: '#6FADCF', // Colors
+ colorStop: '#8FC0DA', // just experiment with them
+ strokeColor: '#E0E0E0', // to see which ones work best for you
+ generateGradient: true,
+ highDpiSupport: true, // High resolution support
+ staticZones: [
+ {strokeStyle: "#005a0f", min: 0, max:  10}, // Red from 100 to 130
+ {strokeStyle: "#008316", min: 10, max:  20}, // Red from 100 to 130
+ {strokeStyle: "#1ca800", min: 20, max: 25}, // Red from 100 to 130
+ {strokeStyle: "#00ff00", min: 25, max: 30}, // Yellow
+ {strokeStyle: "#ffff00", min: 30, max: 35}, // Green
+ {strokeStyle: "#ff7f00", min: 35, max: 40}, // Yellow
+ {strokeStyle: "#ff0000", min: 40, max: 50} // Red
+],
+// percentColors : [[0.0, "#a9d70b" ], [0.50, "#f9c802"], [1.0, "#ff0000"]],
+staticLabels: {
+ font: "10px sans-serif", // Specifies font
+ labels: [0,10,20,25,30,35,40,50], // Print labels at these values
+ color: "#ffffff", // Optional: Label text color
+ fractionDigits: 2 // Optional: Numerical precision. 0=round off.
+},
+renderTicks: {
+ divisions: 5,
+ divWidth: 1.1,
+ divLength: 0.7,
+ divColor: "#333333",
+ subDivisions: 3,
+ subLength: 0.5,
+ subWidth: 0.6,
+ subColor: "#666666"
+ },
+};
+
+// deep copy
+let opts2=JSON.stringify(opts1)
+let opts3=JSON.parse(opts2)
+opts2=JSON.parse(opts2)
+
+//temprature values copied from above
+let target1 = document.getElementById("gauge1"); // your canvas element
+gauge1 = new Gauge(target1).setOptions(opts1); // create sexy gauge!
+gauge1.maxValue = 50; // set max gauge value
+gauge1.setMinValue(0); // Prefer setter over gauge.minValue = 0
+gauge1.animationSpeed = 32; // set animation speed (32 is default value)
+gauge1.setTextField(document.getElementById("gauge1-text"),2);
+gauge1.set(20); // set actual value
+
+
+
+
+//humidity / gauge
+opts2.staticZones=[
+  {strokeStyle: "#005a0f", min: 0, max: 10},    // Deep green[2]
+  {strokeStyle: "#008316", min: 10, max: 20},   // Forest green[3]
+  {strokeStyle: "#008316", min: 20, max: 30},   // Sap green[3]
+  {strokeStyle: "#1ca800", min: 30, max: 40},   // Olive/bronze[3]
+  {strokeStyle: "#1ca800", min: 40, max: 50},   // Brown[3]
+  {strokeStyle: "#00ff00", min: 50, max: 60},   // Reddish-brown[3]
+  {strokeStyle: "#ffff00", min: 60, max: 70},   // Deep red[3]
+  {strokeStyle: "#ff7f00", min: 70, max: 80},   // Soft red[1]
+  {strokeStyle: "#FF2E2E", min: 80, max: 90},   // Bright red
+  {strokeStyle: "#ff0000", min: 90, max: 100}   // Pure red[1]
+];
+opts2.staticLabels.labels=[0,10,20,30,40,50,60,70,80,90,100];
+
+let target2 = document.getElementById("gauge2"); // your canvas element
+gauge2 = new Gauge(target2).setOptions(opts2); // create sexy gauge!
+gauge2.maxValue = 100; // set max gauge value
+gauge2.setMinValue(00); // Prefer setter over gauge.minValue = 0
+gauge2.animationSpeed = 32; // set animation speed (32 is default value)
+gauge2.setTextField(document.getElementById("gauge2-text"),2);
+gauge2.set(50); // set actual value
+
+
+
+
+//heat index / gauge
+opts3.staticZones=[
+  {strokeStyle: "#005a0f", min: 0, max: 10},    // Deep green[2]
+  {strokeStyle: "#008316", min: 10, max: 20},   // Forest green[3]
+  {strokeStyle: "#008316", min: 20, max: 30},   // Sap green[3]
+  {strokeStyle: "#1ca800", min: 30, max: 40},   // Olive/bronze[3]
+  {strokeStyle: "#1ca800", min: 40, max: 50},   // Brown[3]
+  {strokeStyle: "#00ff00", min: 50, max: 60},   // Reddish-brown[3]
+  {strokeStyle: "#ffff00", min: 60, max: 70},   // Deep red[3]
+  {strokeStyle: "#ff7f00", min: 70, max: 80},   // Soft red[1]
+  {strokeStyle: "#FF2E2E", min: 80, max: 90},   // Bright red
+  {strokeStyle: "#ff0000", min: 90, max: 100}   // Pure red[1]
+]
+opts3.staticLabels.labels=[0,10,20,30,40,50,60,70,80,90,100];
+
+let target3 = document.getElementById("gauge3"); // your canvas element
+gauge3 = new Gauge(target3).setOptions(opts3); // create sexy gauge!
+gauge3.maxValue = 100; // set max gauge value
+gauge3.setMinValue(0); // Prefer setter over gauge.minValue = 0
+gauge3.animationSpeed = 32; // set animation speed (32 is default value)
+gauge3.setTextField(document.getElementById("gauge3-text"),2);
+gauge3.set(20); // set actual value
+}
+
+//apex chart
+// area chart / chart 1
+let arr1=[1,2,3,5,0];
+let arr2=[5,4,8,7,0];
+let arr3=[7,2,5,4,0];
+let categories1=["1","2","3","4","5"]
+
+let area1=arr1
+let area2=arr2
+let area3=arr3
+let area_catagory=categories1
+
+// area chart / chart 1
+var area_options = {
+    chart: { type: 'area', zoom: { enabled: false }, toolbar: { show: false }, height: '100%', width: '100%', foreColor: '#ffffff', },
+    grid: { show: false, },
+    series: [{ name: 'Temperature', data: area1,}, { name: 'Humidity', data: area2}, { name: 'Heat Index', data: area3}],
+    xaxis: { categories:area_catagory, },
+    colors: ['#ffe200', '#ff00af' ,'#007cff'],
+    dataLabels: { enabled: false },
+    stroke: { curve: 'straight' },
+    legend: { position: 'top', horizontalAlign: 'right', },
+    // theme:{mode:'dark',color:"#000000"},
+    tooltip: { enabled: true,theme:'dark'}
+}
+let chart1 = new ApexCharts(document.getElementById("Chart1"), area_options);
+chart1.render();    
+
+
+// radial chart / chart 2
+let radialBar=[0,0,0];
+var options = {
+    chart: { type: 'radialBar', height: '500px', width: '100%', foreColor: '#ffffff'},
+    series: radialBar,
+    // xaxis: { categories: [], },
+    // colors: ['#ffe200', '#ff00af' ,'#007cff'],
+    labels:["MQ7","MQ8","MQ135"],
+    plotOptions:{
+        radialBar:{
+            offsetY:0,
+            startAngle:-90,
+            endAngle:90,
+            track:{
+                strokeWidth:'100%',
+                margin:5,
+            },
+        },
+    },
+    tooltip: { enabled: true,theme:'dark'},
+
+}
+let chart2 = new ApexCharts(document.getElementById("Chart2"), options);
+chart2.render(); 
+
+
+// bar chart / chart 3
+let bar_data={
+    real_time:[
+        {   
+            x:'Temperature',y:1,goals:[{name:"Max",value:2,strokeColor:"#FFFFFF"}]
+        },
+        {   
+            x:'Humidity',y:1,goals:[{name:"Max",value:2,strokeColor:"#FFFFFF"}]
+        },
+        {   
+            x:'Heat Index',y:1,goals:[{name:"Max",value:2,strokeColor:"#FFFFFF"}]
+        }
+    ],
+    week:[
+        {   
+            x:'Temperature',y:[0,1]
+        },
+        {   
+            x:'Humidity',y:[0,1]
+        },
+        {   
+            x:'Heat Index',y:[0,1]
+        }
+    ],
+    month:[
+        {   
+            x:'Temperature',y:[0,1]
+        },
+        {   
+            x:'Humidity',y:[0,1]
+        },
+        {   
+            x:'Heat Index',y:[0,1]
+        }
+    ],
+    flag:0
+}
+
+var bar_options1 = {
+    chart: { type: 'bar', zoom: { enabled: false }, toolbar: { show: false }, height: '100%', width: '100%', foreColor: '#ffffff', stacked:true},
+    grid: { show: false, },
+    series: [{ name: 'now', data:  bar_data.real_time, colors: 'red' },],
+    // xaxis: { categories: ["Temperature","Humidity","Heat Index"]},
+    // colors: ['#ffe200', '#ff00af' ,'#007cff'],
+    // dataLabels: { enabled: false },
+    legend: { position: 'top', horizontalAlign: 'right'},
+    // theme:{mode:'dark',color:"#000000"},
+    tooltip: { enabled: true,theme:'dark'}
+}
+let chart3 = new ApexCharts(document.getElementById("Chart3"), bar_options1);
+chart3.render();    
+
+var bar_options2 = {
+    chart: { type: 'rangeBar', zoom: { enabled: false }, toolbar: { show: false }, height: '100%', width: '100%', foreColor: '#ffffff', },
+    series:[ {data: bar_data.month} ],
+    plotOptions: { bar: {isDumbbell: true,columnWidth: 30,dumbbellColors: [['#008FFB', '#00E396']]} },
+    tooltip: { enabled: true,theme:'dark'},
+    legend: {
+      show: true,
+      showForSingleSeries: true,
+      position: 'top',
+      horizontalAlign: 'right',
+      customLegendItems: ['Max', 'Min']
+    },
+    fill: { 
+        type: 'gradient',
+        gradient: {type: 'vertical',gradientToColors: ['#00FF00'],inverseColors: false,stops: [0, 100]}
+    },
+    grid: { xaxis: {lines: {show: true}},yaxis: {lines: {show: false}} },
+    xaxis: {tickPlacement: 'on'}
+};
+// let chart3 = new ApexCharts(document.getElementById("Chart3"), bar_options2);
+// chart3.render();    
+
+
+
+
+
+
+
+
+
+//fetch from google sheet
+let data={
+    date_arr:[],
+    time:[],
+    temperature:[],
+    humidity:[],
+    heat_index:[],
+    mq7:[],
+    mq8:[],
+    mq135:[],
+    col:8
+}
+
+for(i=1;i<google_data.values.length;i++){
+    data.date_arr.push(google_data.values[i][0]);
+    data.time.push(google_data.values[i][1]);
+    data.temperature.push(google_data.values[i][2]);
+    data.humidity.push(google_data.values[i][3]);
+    data.heat_index.push(google_data.values[i][4]);
+    data.mq7.push(google_data.values[i][5]);
+    data.mq8.push(google_data.values[i][6]);
+    data.mq135.push(google_data.values[i][7]);
+}
+
+
+let month_data={
+    date_arr:[],
+    temperature:{max:[],min:[]},
+    humidity:{max:[],min:[]},
+    heat_index:{max:[],min:[]},
+}
+
+function chart1_realtime()
+{
+    area_options.xaxis.categories=categories1;
+    area_options.series[0].data=arr1;
+    area_options.series[1].data=arr2;
+    area_options.series[2].data=arr3;
+    chart1.updateOptions(area_options);
+}
+
+function area_monthly_data(){
+    month_data.date_arr=[...new Set(data.date_arr)];
+    // console.log(month_data.date_arr)
+    for(i=0;i<data.date_arr.length;i++)
+    {
+        if(data.temperature[i] > month_data.temperature.max[month_data.date_arr.indexOf(data.date_arr[i])]  || month_data.temperature.max[month_data.date_arr.indexOf(data.date_arr[i])]==undefined )
+        {
+            month_data.temperature.max[month_data.date_arr.indexOf(data.date_arr[i])] = data.temperature[i];
+        }
+        if(data.temperature[i] < month_data.temperature.min[month_data.date_arr.indexOf(data.date_arr[i])]  || month_data.temperature.min[month_data.date_arr.indexOf(data.date_arr[i])]==undefined ){
+            month_data.temperature.min[month_data.date_arr.indexOf(data.date_arr[i])] = data.temperature[i];
+        }
+
+        if(data.humidity[i] > month_data.humidity.max[month_data.date_arr.indexOf(data.date_arr[i])]  || month_data.humidity.max[month_data.date_arr.indexOf(data.date_arr[i])]==undefined )
+        {
+            month_data.humidity.max[month_data.date_arr.indexOf(data.date_arr[i])] = data.humidity[i];
+        }
+        if(data.humidity[i] < month_data.humidity.min[month_data.date_arr.indexOf(data.date_arr[i])]  || month_data.humidity.min[month_data.date_arr.indexOf(data.date_arr[i])]==undefined )
+        {
+            month_data.humidity.min[month_data.date_arr.indexOf(data.date_arr[i])] = data.humidity[i];
+        }
+
+        if(data.heat_index[i] > month_data.heat_index.max[month_data.date_arr.indexOf(data.date_arr[i])]  || month_data.heat_index.max[month_data.date_arr.indexOf(data.date_arr[i])]==undefined )
+        {
+            month_data.heat_index.max[month_data.date_arr.indexOf(data.date_arr[i])] = data.heat_index[i];
+        }
+        if(data.heat_index[i] < month_data.heat_index.min[month_data.date_arr.indexOf(data.date_arr[i])]  || month_data.heat_index.min[month_data.date_arr.indexOf(data.date_arr[i])]==undefined )
+        {
+            month_data.heat_index.min[month_data.date_arr.indexOf(data.date_arr[i])] = data.heat_index[i];
+        }
+    }
+}
+
+
+
+
+
+function chart1_week(){
+    let temp={
+        temperature_month:[...month_data.temperature.max],
+        humidity_month:[...month_data.humidity.max],
+        heat_index_month:[...month_data.heat_index.max],
+        date_arr_month:[...month_data.date_arr],
+    }
+    if(temp.temperature_month.length > 7)
+    {
+        temp.temperature_month.length=8
+        temp.humidity_month.length=8
+        temp.heat_index_month.length=8
+        temp.date_arr_month.length=8
+    }
+    area_options.xaxis.categories=temp.date_arr_month;
+    area_options.series[0].data=temp.temperature_month;
+    area_options.series[1].data=temp.humidity_month;
+    area_options.series[2].data=temp.heat_index_month;
+    chart1.updateOptions(area_options);
+
+
+}
+
+function chart1_month(){
+    let temp={
+        temperature_month:[...month_data.temperature.max],
+        humidity_month:[...month_data.humidity.max],
+        heat_index_month:[...month_data.heat_index.max],
+        date_arr_month:[...month_data.date_arr]
+    }
+    if(temp.temperature_month.length > 30)
+    {
+        temp.temperature_month.length=30
+        temp.humidity_month.length=30
+        temp.heat_index_month.length=30
+        temp.date_arr_month.length=30
+    }
+    area_options.xaxis.categories=temp.date_arr_month
+    area_options.series[0].data=temp.temperature_month
+    area_options.series[1].data=temp.humidity_month
+    area_options.series[2].data=temp.heat_index_month
+    chart1.updateOptions(area_options)
+}
+
+
+
+//chart3
+function chart3_realtime(){
+    if(bar_data.flag==1)
+    {
+        chart3.destroy()
+        chart3 = new ApexCharts(document.getElementById("Chart3"), bar_options1);
+        chart3.render();
+    }
+    chart3.updateSeries([{data:bar_data.real_time}])
+}
+
+function bar_monthly_data()
+{
+    //month
+    bar_data.month[0].y[0] = Math.min(...month_data.temperature.min)
+    bar_data.month[0].y[1] = Math.max(...month_data.temperature.max)
+    bar_data.month[1].y[0] = Math.min(...month_data.humidity.min)
+    bar_data.month[1].y[1] = Math.max(...month_data.humidity.max)
+    bar_data.month[2].y[0] = Math.min(...month_data.heat_index.min)
+    bar_data.month[2].y[0] = Math.min(...month_data.heat_index.min)
+
+    bar_data.month[2].y[1] = Math.max(...month_data.heat_index.max)
+    
+    //week
+    let temp={
+        temperature:{min:[],max:[]},
+        humidity:{min:[],max:[]},
+        heat_index:{min:[],max:[]}
+    }
+
+    temp.temperature.min=[...month_data.temperature.min]
+    temp.temperature.max=[...month_data.temperature.max]
+    temp.humidity.min=[...month_data.humidity.min]
+    temp.humidity.max=[...month_data.humidity.min]
+    temp.heat_index.min=[...month_data.heat_index.min]
+    temp.heat_index.max=[...month_data.heat_index.min]
+    if(temp.temperature.min.length > 7)
+    {
+        temp.temperature.min.length=7
+        temp.temperature.max.length=7
+        temp.humidity.min.length=7
+        temp.humidity.max.length=7
+        temp.heat_index.min.length=7
+        temp.heat_index.max.length=7
+    }
+
+    bar_data.week[0].y[0] = Math.min(...temp.temperature.min)
+    bar_data.week[0].y[1] = Math.max(...temp.temperature.max)
+    bar_data.week[1].y[0] = Math.min(...temp.humidity.min)
+    bar_data.week[1].y[1] = Math.max(...temp.humidity.max)
+    bar_data.week[2].y[0] = Math.min(...temp.heat_index.min)
+    bar_data.week[2].y[1] = Math.max(...temp.heat_index.max)
+
+}
+
+function chart3_week(){
+    bar_data.flag==1
+    chart3.destroy()
+    bar_options2.series[0].data=bar_data.week
+    chart3 = new ApexCharts(document.getElementById("Chart3"), bar_options2);
+    chart3.render();
+}
+
+function chart3_month()
+{
+    bar_data.flag=1
+    chart3.destroy()
+    bar_options2.series[0].data=bar_data.month
+    chart3 = new ApexCharts(document.getElementById("Chart3"), bar_options2);
+    chart3.render();
+}
+
+
+
+
+let ptr=0;
+let z
+function loops(e){
+    z= setInterval(()=>{
+        d=new Date()
+        date =d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+       
+        // area chart / chart 1
+        arr1.splice(0,1);
+        arr2.splice(0,1);
+        arr3.splice(0,1);
+        categories1.splice(0,1);
+        arr1.push(data.temperature[ptr]);
+        arr2.push(data.humidity[ptr]);
+        arr3.push(data.heat_index[ptr]);
+        categories1.push(data.time[ptr]);
+
+        //gauge
+        gauge1.set(arr1[arr1.length-1]);
+        gauge2.set(arr2[arr1.length-1]);
+        gauge3.set(arr3[arr1.length-1]);
+
+        if(document.getElementById("btnradio1").checked == true)
+        {
+            chart1_realtime();
+        }
+        load_table();
+
+        //radial chart / chart2
+        radialBar[0]= (data.mq7[ptr] / 2000) * 100
+        radialBar[1]= (data.mq8[ptr] / 1000) * 100
+        radialBar[2]= (data.mq135[ptr] / 1000) * 100
+        chart2.updateSeries(radialBar)
+
+        //bar chart / chart3
+        // if condition
+        bar_data.real_time
+        bar_data.real_time[0].goals[0].value= bar_data.real_time[0].y > bar_data.real_time[0].goals[0].value ? bar_data.real_time[0].y : bar_data.real_time[0].goals[0].value ;
+        bar_data.real_time[1].goals[0].value= bar_data.real_time[1].y > bar_data.real_time[1].goals[0].value ? bar_data.real_time[1].y : bar_data.real_time[1].goals[0].value ;
+        bar_data.real_time[2].goals[0].value= bar_data.real_time[2].y > bar_data.real_time[2].goals[0].value ? bar_data.real_time[2].y : bar_data.real_time[2].goals[0].value ;
+        
+        bar_data.real_time[0].y=arr1[arr1.length-1];
+        bar_data.real_time[1].y=arr2[arr2.length-1];
+        bar_data.real_time[2].y=arr3[arr3.length-1];
+
+        if(document.getElementById("bar-chart-btnradio1").checked == true)
+        {
+            chart3_realtime();
+        }
+        console.log(e)
+        ptr++;
+    },e)
+}
+
+function range(){
+    clearInterval(z)
+    document.getElementById('range-value').innerHTML=document.getElementById('range').value+" s"
+    loops(document.getElementById('range').value*1000)
+}
+
+function pause()
+{
+    clearInterval(z)
+    alert("Reload Paused")
+}
+
+function time_loop(){
+    setInterval(()=>{
+        d=new Date()
+        date =d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+        document.getElementById("time-value").innerHTML=date;
+    },1000)
+}
+
+function load_table(){
+let table = document.getElementById("Table");
+var row = table.insertRow(1);
+let cell1 = row.insertCell(0);
+let cell2 = row.insertCell(1);
+let cell3 = row.insertCell(2);
+let cell4 = row.insertCell(3);
+let cell5 = row.insertCell(4);
+let cell6 = row.insertCell(5);
+let cell7 = row.insertCell(6);
+let cell8 = row.insertCell(7);
+
+cell1.innerHTML= table.rows.length-2;
+cell2.innerHTML= date;
+cell3.innerHTML= arr1[arr1.length-1];
+cell4.innerHTML= arr2[arr2.length-1];
+cell5.innerHTML= arr3[arr3.length-1];
+cell6.innerHTML= data.mq7[ptr]
+cell7.innerHTML= data.mq8[ptr]
+cell8.innerHTML= data.mq135[ptr]
+
+// if(cell3.innerHTML>500){
+//     cell3.style.backgroundColor = "Red";
+//     cell3.style.color = "white";
+// }
+// if(cell4.innerHTML>500){
+//     cell4.style.backgroundColor = "Red";
+//     cell4.style.color = "white";
+// }
+// if(cell5.innerHTML>500){
+//     cell5.style.backgroundColor = "Red";
+//     cell5.style.color = "white";
+// }
+// if(cell6.innerHTML>1000){
+//     cell6.style.backgroundColor = "Red";
+//     cell6.style.color = "white";
+// }
+// if(cell7.innerHTML>1000){
+//     cell7.style.backgroundColor = "Red";
+//     cell7.style.color = "white";
+// }
+// if(cell8.innerHTML>100){
+//     cell8.style.backgroundColor = "Red";
+//     cell8.style.color = "white";
+// }
+}
+
+
+
+function fetch_data(){
+
+    let k=()=>{
+        //fetch data from google sheet
+        /* ---- fetch code goes here ---- */
+        if(google_data.values.length > data.time.length)
+        {
+            let l=data.time.length;
+            for(i=0;i < (google_data.values.length - data.time.length);i++)
+            {
+                data.date_arr.push(google_data.values[i+l][0])
+                data.time.push(google_data.values[i+l][1])
+                data.temperature.push(google_data.values[i+l][2])
+                data.humidity.push(google_data.values[i+l][3])
+                data.heat_index.push(google_data.values[i+l][4])
+                data.mq7.push(google_data.values[i+l][5])
+                data.mq8.push(google_data.values[i+l][6])
+                data.mq135.push(google_data.values[i+l][7])
+            }
+        }
+    }
+    setInterval(z,1000);
+}
+
+
+
+window.onload=()=>{
+    // fetch_data()
+    load_table();
+    load_gauge();
+    area_monthly_data()
+    bar_monthly_data();
+    range();
+    time_loop();
+}
+
+
+let g_data = {
+  "values": []
+}
+function Random_data(){
+let f=new Date()
+f.setDate(0)
+f.setMonth(0)
+for(i=0;i<120;i++)
+{
+    f.setDate(f.getDate()+1)
+    for(j=1;j<=5;j++)
+    {
+        let y=[];
+        y.push(f.getDate()+"/"+(f.getMonth())+"/2024");
+        y.push("20:"+String(j).padStart(2,"0")+":00");
+        y.push(Math.floor(Math.random()*50));
+        y.push(Math.floor(Math.random()*90));
+        y.push(Math.floor(Math.random()*80));
+        y.push(Math.floor(Math.random()*20)*100);
+        y.push(Math.floor(Math.random()*10)*100);
+        y.push(Math.floor(Math.random()*10)*100);
+        g_data.values.push(y)
+    }
+}
+}
+
+
+
+
+
+</script>
 </html>
+
+
